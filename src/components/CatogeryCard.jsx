@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 function CatogeryCard({ catogry, selectedCategory, setSelectedCategory }) {
 	return (
 		<Box
@@ -7,25 +7,23 @@ function CatogeryCard({ catogry, selectedCategory, setSelectedCategory }) {
 				setSelectedCategory(catogry.name);
 			}}
 			sx={{
-				m: 0,
-				color: 'white',
+				marginTop: '1px',
 				padding: '8px 12px',
 				display: 'flex',
 				justifyContent: 'flex-start',
 				alignItems: 'center',
-				gap: '10px',
 				cursor: 'pointer',
-        borderRadius:'20px',
-				backgroundColor: selectedCategory === catogry.name ? 'red' : '#101010',
+				borderRadius: '10px',
+				backgroundColor: selectedCategory === catogry.name ? '#303030' : '#000',
 				'&:hover': {
-					backgroundColor: '#323131',
-          opacity:'.9'
+					backgroundColor: '#303030',
+					opacity: '.9',
 				},
 			}}>
-			<Box sx={{ color: selectedCategory === catogry.name ? 'white' : 'red' }}>
+			<Box sx={{ fontSize: '1.25rem', marginRight: '1.25rem' }}>
 				{catogry.icon}
 			</Box>
-			<Box>{catogry.name}</Box>
+			<Typography sx={{ fontSize: '14px' }}>{catogry.name}</Typography>
 		</Box>
 	);
 }

@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Videos } from '../components';
 import { fetchUrl } from '../utils/FetchApi';
@@ -31,27 +31,14 @@ function SearchFeed() {
 		fetchFeed();
 	}, [searchKeyword]);
 	console.log(dataloaded);
+	if (loading) return <h1>loading</h1>;
 	return (
-		<Stack sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
-			{loading ? (
-				<h1>Loading</h1>
-			) : (
-				<Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
-					<Videos videos={videos} />
-				</Box>
-			)}
+		<Stack sx={{ flexDirection: { xs: 'column', md: 'row' }, bgcolor: '#000' }}>
+			<Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
+				<Videos videos={videos} />
+			</Box>
 		</Stack>
 	);
 }
 
 export default SearchFeed;
-/**				<Typography
-					sx={{
-						color: 'white',
-						padding: '1rem 2rem',
-						fontSize: '18px',
-						fontWeight: 'bold',
-						backgroundColor: 'red',
-					}}>
-					{error}
-				</Typography> */

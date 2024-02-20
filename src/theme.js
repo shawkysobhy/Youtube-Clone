@@ -12,9 +12,27 @@ const theme = createTheme({
 			xs: 0,
 			xsm: 500,
 			sm: 600,
+			asm: 750,
 			md: 900,
 			lg: 1200,
 			xl: 1536,
+		},
+	},
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				'@global': {
+					'*': {
+						boxSizing: 'border-box',
+					},
+					'::before': {
+						boxSizing: 'inherit',
+					},
+					'::after': {
+						boxSizing: 'inherit',
+					},
+				},
+			},
 		},
 	},
 });
