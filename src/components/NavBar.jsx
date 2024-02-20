@@ -1,7 +1,5 @@
 import { Stack, Box, SvgIcon } from '@mui/material';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
-import bell2 from '../assets/bell2.svg';
 import { useContext } from 'react';
 import { SearchBar } from './';
 import { Context } from '../context/AppContext';
