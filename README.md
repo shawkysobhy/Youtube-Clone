@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Clone Project</title>
 </head>
 <body>
 
@@ -29,7 +28,6 @@
   <li><strong style="color:#f44250">React Router</strong>
   <li><strong style="color:#2a71e0">Rapid Api</strong>
 </ul>
-
 
 <h2>Installation</h2>
 
