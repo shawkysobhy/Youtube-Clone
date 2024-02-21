@@ -11,11 +11,7 @@ function Videos({ videos }) {
 				flexWrap={'wrap'}
 				gap={2}>
 				{videos?.map((item, i) => {
-					{
-						if (!item.id.videoId && !item.id.channelId) {
-							console.log(item);
-						}
-					}
+					
 					return (
 						<Box
 							key={i}

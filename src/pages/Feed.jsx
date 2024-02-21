@@ -1,13 +1,12 @@
-import { Box, Stack } from '@mui/material';
-import { useEffect, useState } from 'react';
-
-import { Aside, Videos } from '../components';
+import { Stack, Grid } from '@mui/material';
+import { useEffect, useState, useContext } from 'react';
+import { Context } from '../context/AppContext';
+import { Aside, VideoCard, ChannelCard, PlaylistCard } from '../components';
 import { fetchUrl } from '../utils/FetchApi';
 function Feed() {
-	const [selectedCategory, setSelectedCategory] = useState('New');
+	const { selectedCategory } = useContext(Context);
 	const [videos, setVideos] = useState([]);
-	const [error, setError] = useState(null);
-	const [loading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
 		async function fetchFeed() {
 			try {
@@ -15,8 +14,8 @@ function Feed() {
 				const { data, error } = await fetchUrl('/search', {
 					q: selectedCategory,
 					part: 'snippet,id',
-					regionCode: 'EG',
-					maxResults: '200',
+					regionCode: 'US',
+					maxResults: '60',
 					order: 'date',
 				});
 				if (error) throw error;
@@ -25,7 +24,6 @@ function Feed() {
 			} catch (error) {
 				console.log(error);
 				setIsLoading(false);
-				setError(error.message);
 			}
 		}
 		fetchFeed();
@@ -34,15 +32,31 @@ function Feed() {
 		<Stack
 			sx={{
 				flexDirection: 'row',
+				bgcolor: '#000',
 				height: 'calc(100vh - 64px)',
 			}}>
-			<Aside
-				selectedCategory={selectedCategory}
-				setSelectedCategory={setSelectedCategory}
-			/>
-			<Box p={2} sx={{ overflowY: 'auto', flex: 2, bgcolor: '#000' }}>
-				{loading ? <h1>Loading</h1> : <Videos videos={videos} />}
-			</Box>
+			<Aside />
+			{isLoading && <h1>Loading .....</h1>}
+			{!isLoading && (
+				<Grid
+					spacing={2}
+					container
+					sx={{
+						overflowY: 'auto',
+						padding: '3rem 1.25rem',
+						flex: 2,
+					}}>
+					{videos?.map((item, i) => {
+						return (
+							<Grid item xs={12} sm={6} md={4} xl={3} key={i}>
+								{item.id.videoId && <VideoCard video={item} />}
+								{item.id.channelId && <ChannelCard channel={item} />}
+								{item.id.playlistId && <PlaylistCard playlist={item} />}
+							</Grid>
+						);
+					})}
+				</Grid>
+			)}
 		</Stack>
 	);
 }

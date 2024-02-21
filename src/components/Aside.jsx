@@ -3,7 +3,7 @@ import CatogeryCard from './CatogeryCard';
 import { categories } from '../utils/constants';
 import { Context } from '../context/AppContext';
 import { useContext } from 'react';
-function Aside({ selectedCategory, setSelectedCategory }) {
+function Aside() {
 	const { openMenu, isSmallScreen } = useContext(Context);
 	return (
 		<Stack
@@ -21,23 +21,10 @@ function Aside({ selectedCategory, setSelectedCategory }) {
 				display: !isSmallScreen ? 'flex' : openMenu ? 'flex' : 'none',
 			}}>
 			{categories.map((catogry) => {
-				return (
-					<CatogeryCard
-						key={catogry.name}
-						selectedCategory={selectedCategory}
-						setSelectedCategory={setSelectedCategory}
-						sx={{ padding: '1rem 2rem' }}
-						catogry={catogry}
-					/>
-				);
+				return <CatogeryCard key={catogry.name} catogry={catogry} />;
 			})}
 		</Stack>
 	);
 }
 
 export default Aside;
-
-// <Typography
-// 	sx={{ color: 'white', backgroundColor: '#101010', height: '100vh' }}>
-// 	aside
-// </Typography>

@@ -1,4 +1,4 @@
-import { Input, Paper, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 function SearchBar() {
@@ -27,34 +27,34 @@ function SearchBar() {
 		}
 	};
 	return (
-			<TextField
-				placeholder='search'
-				InputProps={{
+		<TextField
+			placeholder='search'
+			InputProps={{
+				padding: 0,
+			}}
+			style={{
+				backgroundColor: 'black',
+				padding: 0,
+			}}
+			margin='normal'
+			sx={{
+				'& .MuiInputBase-root': {
 					padding: 0,
-				}}
-				style={{
-					backgroundColor: 'black',
+					margin: 0,
+					border: 'solid 1px #303030',
+					height: '38px',
+					width: { xs: '10rem', sm: '400px', md: '500px' },
+				},
+				'& .MuiInputBase-input': {
 					padding: 0,
-				}}
-				margin='normal'
-				sx={{
-					'& .MuiInputBase-root': {
-						padding: 0,
-						margin: 0,
-						border: 'solid 1px #303030',
-						height: '38px',
-						width: { xs: '10rem', sm: '400px', md: '500px' },
-					},
-					'& .MuiInputBase-input': {
-						padding: 0,
-						color: '#fff',
-					},
-					'& .MuiTextField-root': {
-						margin: 0,
-					},
-				}}
-				variant='outlined'
-			/>
+					color: '#fff',
+				},
+				'& .MuiTextField-root': {
+					margin: 0,
+				},
+			}}
+			variant='outlined'
+		/>
 	);
 }
 

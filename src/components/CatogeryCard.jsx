@@ -1,11 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Box, Typography } from '@mui/material';
-function CatogeryCard({ catogry, selectedCategory, setSelectedCategory }) {
+import { Context } from '../context/AppContext';
+import { useContext } from 'react';
+function CatogeryCard({ catogry }) {
+	const { setSelectedCategory, selectedCategory } = useContext(Context);
+	const selectedCategoryHandler = (category) => {
+		console.log(category);
+		if (category.type == 'category') {
+			setSelectedCategory(category.name);
+		}
+	};
 	return (
 		<Box
-			onClick={() => {
-				setSelectedCategory(catogry.name);
-			}}
+			onClick={() => selectedCategoryHandler(catogry)}
 			sx={{
 				marginTop: '1px',
 				padding: '8px 12px',

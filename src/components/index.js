@@ -7,8 +7,10 @@ import Aside from './Aside';
 import Videos from './Videos';
 import SearchBar from './SearchBar';
 import PlaylistCard from './PlaylistCard';
+import SmallVideoCard from './smallVideoCard';
 
 export {
+	SmallVideoCard,
 	VideoCard,
 	PlaylistCard,
 	ChannelCard,
