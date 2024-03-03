@@ -5,7 +5,6 @@ import { useContext } from 'react';
 function CatogeryCard({ catogry }) {
 	const { setSelectedCategory, selectedCategory } = useContext(Context);
 	const selectedCategoryHandler = (category) => {
-		console.log(category);
 		if (category.type == 'category') {
 			setSelectedCategory(category.name);
 		}
